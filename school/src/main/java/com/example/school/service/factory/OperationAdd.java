@@ -1,6 +1,11 @@
 package com.example.school.service.factory;
 
 public class OperationAdd extends Operation {
-    double result = 0;
+    public double GetResult(){
+        double result = 0;
+        result = numberA + numberB;
+        return result;
+    }
+
 
 }
