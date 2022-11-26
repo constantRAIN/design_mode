@@ -1,6 +1,6 @@
-package com.example.school.service.factory;
+package com.example.school.service.human;
 
-public class Man implements Person{
+public class Man implements Person {
 
     @Override
     public void create() {

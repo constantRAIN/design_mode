@@ -1,4 +1,4 @@
-package com.example.school.service.factory;
+package com.example.school.service.human;
 
 public class Nvma {
 
