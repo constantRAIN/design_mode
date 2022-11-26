@@ -1,0 +1,11 @@
+server:
+  port: 8801
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/data_gather?serverTimezone=Asia/Shanghai&characterEncoding=utf-8
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.example.localproject.bean
+
