@@ -1,4 +1,4 @@
-package com.example.school.service.factory;
+package com.example.school.service.easyFactory;
 
 public class OperationDiv extends Operation{
     public double GetResult() throws Exception {

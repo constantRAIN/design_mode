@@ -1,4 +1,4 @@
-package com.example.school.service.factory;
+package com.example.school.service.easyFactory;
 
 public class OperationSub extends Operation{
     public double GetResult(){

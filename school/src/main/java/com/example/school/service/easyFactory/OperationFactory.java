@@ -1,4 +1,4 @@
-package com.example.school.service.factory;
+package com.example.school.service.easyFactory;
 
 public class OperationFactory {
     public static Operation creatOperate(String operate) {
