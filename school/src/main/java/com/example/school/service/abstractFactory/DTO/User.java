@@ -1,4 +1,4 @@
-package com.example.school.service.abstractFactory;
+package com.example.school.service.abstractFactory.DTO;
 
 import lombok.Data;
 
