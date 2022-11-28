@@ -1,4 +1,4 @@
-package com.example.school.service.factoryMethod.leifengModule;
+package com.example.school.service.factoryMethod;
 
 public class UndergraduateFactory implements IFactory{
 

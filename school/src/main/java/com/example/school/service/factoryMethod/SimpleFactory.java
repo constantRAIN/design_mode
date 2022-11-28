@@ -1,4 +1,4 @@
-package com.example.school.service.factoryMethod.leifengModule;
+package com.example.school.service.factoryMethod;
 
 public class SimpleFactory {
     public static LeiFeng creatLeiFeng(String type){
