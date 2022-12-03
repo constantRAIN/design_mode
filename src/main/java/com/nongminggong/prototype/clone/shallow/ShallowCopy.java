@@ -6,14 +6,14 @@ package com.nongminggong.prototype.clone.shallow;
  */
 public class ShallowCopy {
 	public static void main(String[] args) {
-		Computer computer = new Computer("red","xiaomi");
-		Person person = new Person("张三","程序员",computer);
-		Person clonePerson =  (Person)person.clone();
+		Computer computer = new Computer("red", "xiaomi");
+		Person person = new Person("张三", "程序员", computer);
+		Person clonePerson = (Person) person.clone();
 
 		System.out.println(person);
 		System.out.println(clonePerson);
 
-		//使用克隆对象修改 电脑属性值
+		// 使用克隆对象修改 电脑属性值
 		clonePerson.getComputer().setBrand("huawei");
 		clonePerson.getComputer().setColor("black");
 

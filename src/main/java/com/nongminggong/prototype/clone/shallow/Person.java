@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person {
+public class Person implements Cloneable {
 	/**
 	 * 姓名
 	 */
@@ -21,11 +21,12 @@ public class Person {
 	 */
 	private String occupation;
 	private Computer computer;
+
 	@Override
 	protected Object clone() {
-		com.nongminggong.prototype.Person person= null;
+		Person person = null;
 		try {
-			person = (com.nongminggong.prototype.Person)super.clone();
+			person = (Person) super.clone();
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
