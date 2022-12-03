@@ -16,6 +16,7 @@ public class ShallowCopy {
 		// 使用克隆对象修改 电脑属性值
 		clonePerson.getComputer().setBrand("huawei");
 		clonePerson.getComputer().setColor("black");
+		clonePerson.setName("李四");
 
 		System.out.println("克隆对象修改值后");
 		System.out.println(person);
