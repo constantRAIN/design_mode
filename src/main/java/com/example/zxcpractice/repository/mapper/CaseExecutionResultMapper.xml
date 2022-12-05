@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zxcpractice.repository.CaseExecutionResultMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.CaseExecutionResult">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="case_id" jdbcType="VARCHAR" property="caseId" />
+    <result column="case_name" jdbcType="VARCHAR" property="caseName" />
+    <result column="service_line_name" jdbcType="VARCHAR" property="serviceLineName" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="api_name" jdbcType="VARCHAR" property="apiName" />
+    <result column="execution_id" jdbcType="VARCHAR" property="executionId" />
+    <result column="environment_type" jdbcType="TINYINT" property="environmentType" />
+    <result column="case_startTime" jdbcType="TIMESTAMP" property="caseStarttime" />
+    <result column="case_duration" jdbcType="BIGINT" property="caseDuration" />
+    <result column="case_endTime" jdbcType="TIMESTAMP" property="caseEndtime" />
+    <result column="result_status" jdbcType="INTEGER" property="resultStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="build_user" jdbcType="VARCHAR" property="buildUser" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs">
+    <result column="request_parameter" jdbcType="LONGVARCHAR" property="requestParameter" />
+    <result column="interface_response" jdbcType="LONGVARCHAR" property="interfaceResponse" />
+    <result column="validation_rules" jdbcType="LONGVARCHAR" property="validationRules" />
+    <result column="validate_result" jdbcType="LONGVARCHAR" property="validateResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, case_id, case_name, service_line_name, service_name, api_name, execution_id, 
+    environment_type, case_startTime, case_duration, case_endTime, result_status, create_time, 
+    update_time, build_user
+  </sql>
+  <sql id="Blob_Column_List">
+    request_parameter, interface_response, validation_rules, validate_result
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from case_execution_result
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from case_execution_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs">
+    insert into case_execution_result (id, case_id, case_name, 
+      service_line_name, service_name, api_name, 
+      execution_id, environment_type, case_startTime, 
+      case_duration, case_endTime, result_status, 
+      create_time, update_time, build_user, 
+      request_parameter, interface_response, 
+      validation_rules, validate_result
+      )
+    values (#{id,jdbcType=BIGINT}, #{caseId,jdbcType=VARCHAR}, #{caseName,jdbcType=VARCHAR}, 
+      #{serviceLineName,jdbcType=VARCHAR}, #{serviceName,jdbcType=VARCHAR}, #{apiName,jdbcType=VARCHAR}, 
+      #{executionId,jdbcType=VARCHAR}, #{environmentType,jdbcType=TINYINT}, #{caseStarttime,jdbcType=TIMESTAMP}, 
+      #{caseDuration,jdbcType=BIGINT}, #{caseEndtime,jdbcType=TIMESTAMP}, #{resultStatus,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{buildUser,jdbcType=VARCHAR}, 
+      #{requestParameter,jdbcType=LONGVARCHAR}, #{interfaceResponse,jdbcType=LONGVARCHAR}, 
+      #{validationRules,jdbcType=LONGVARCHAR}, #{validateResult,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs">
+    insert into case_execution_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="caseId != null">
+        case_id,
+      </if>
+      <if test="caseName != null">
+        case_name,
+      </if>
+      <if test="serviceLineName != null">
+        service_line_name,
+      </if>
+      <if test="serviceName != null">
+        service_name,
+      </if>
+      <if test="apiName != null">
+        api_name,
+      </if>
+      <if test="executionId != null">
+        execution_id,
+      </if>
+      <if test="environmentType != null">
+        environment_type,
+      </if>
+      <if test="caseStarttime != null">
+        case_startTime,
+      </if>
+      <if test="caseDuration != null">
+        case_duration,
+      </if>
+      <if test="caseEndtime != null">
+        case_endTime,
+      </if>
+      <if test="resultStatus != null">
+        result_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="buildUser != null">
+        build_user,
+      </if>
+      <if test="requestParameter != null">
+        request_parameter,
+      </if>
+      <if test="interfaceResponse != null">
+        interface_response,
+      </if>
+      <if test="validationRules != null">
+        validation_rules,
+      </if>
+      <if test="validateResult != null">
+        validate_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="caseId != null">
+        #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseName != null">
+        #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceLineName != null">
+        #{serviceLineName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="apiName != null">
+        #{apiName,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="caseStarttime != null">
+        #{caseStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseDuration != null">
+        #{caseDuration,jdbcType=BIGINT},
+      </if>
+      <if test="caseEndtime != null">
+        #{caseEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultStatus != null">
+        #{resultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildUser != null">
+        #{buildUser,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParameter != null">
+        #{requestParameter,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="interfaceResponse != null">
+        #{interfaceResponse,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validationRules != null">
+        #{validationRules,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validateResult != null">
+        #{validateResult,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs">
+    update case_execution_result
+    <set>
+      <if test="caseId != null">
+        case_id = #{caseId,jdbcType=VARCHAR},
+      </if>
+      <if test="caseName != null">
+        case_name = #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceLineName != null">
+        service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        service_name = #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="apiName != null">
+        api_name = #{apiName,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        execution_id = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        environment_type = #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="caseStarttime != null">
+        case_startTime = #{caseStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseDuration != null">
+        case_duration = #{caseDuration,jdbcType=BIGINT},
+      </if>
+      <if test="caseEndtime != null">
+        case_endTime = #{caseEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resultStatus != null">
+        result_status = #{resultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="buildUser != null">
+        build_user = #{buildUser,jdbcType=VARCHAR},
+      </if>
+      <if test="requestParameter != null">
+        request_parameter = #{requestParameter,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="interfaceResponse != null">
+        interface_response = #{interfaceResponse,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validationRules != null">
+        validation_rules = #{validationRules,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validateResult != null">
+        validate_result = #{validateResult,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs">
+    update case_execution_result
+    set case_id = #{caseId,jdbcType=VARCHAR},
+      case_name = #{caseName,jdbcType=VARCHAR},
+      service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      service_name = #{serviceName,jdbcType=VARCHAR},
+      api_name = #{apiName,jdbcType=VARCHAR},
+      execution_id = #{executionId,jdbcType=VARCHAR},
+      environment_type = #{environmentType,jdbcType=TINYINT},
+      case_startTime = #{caseStarttime,jdbcType=TIMESTAMP},
+      case_duration = #{caseDuration,jdbcType=BIGINT},
+      case_endTime = #{caseEndtime,jdbcType=TIMESTAMP},
+      result_status = #{resultStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      build_user = #{buildUser,jdbcType=VARCHAR},
+      request_parameter = #{requestParameter,jdbcType=LONGVARCHAR},
+      interface_response = #{interfaceResponse,jdbcType=LONGVARCHAR},
+      validation_rules = #{validationRules,jdbcType=LONGVARCHAR},
+      validate_result = #{validateResult,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.CaseExecutionResult">
+    update case_execution_result
+    set case_id = #{caseId,jdbcType=VARCHAR},
+      case_name = #{caseName,jdbcType=VARCHAR},
+      service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      service_name = #{serviceName,jdbcType=VARCHAR},
+      api_name = #{apiName,jdbcType=VARCHAR},
+      execution_id = #{executionId,jdbcType=VARCHAR},
+      environment_type = #{environmentType,jdbcType=TINYINT},
+      case_startTime = #{caseStarttime,jdbcType=TIMESTAMP},
+      case_duration = #{caseDuration,jdbcType=BIGINT},
+      case_endTime = #{caseEndtime,jdbcType=TIMESTAMP},
+      result_status = #{resultStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      build_user = #{buildUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

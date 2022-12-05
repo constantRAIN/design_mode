@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zxcpractice.repository.TaskInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.TaskInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="service_line_name" jdbcType="VARCHAR" property="serviceLineName" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="environment_type" jdbcType="TINYINT" property="environmentType" />
+    <result column="case_numbers" jdbcType="VARCHAR" property="caseNumbers" />
+    <result column="interface_numbers" jdbcType="VARCHAR" property="interfaceNumbers" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updator_name" jdbcType="VARCHAR" property="updatorName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.repository.entity.TaskInfo">
+    <result column="case_id_list" jdbcType="LONGVARCHAR" property="caseIdList" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, service_line_name, service_name, task_name, task_id, environment_type, case_numbers, 
+    interface_numbers, deleted, creator_name, create_time, updator_name, update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    case_id_list
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from task_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+    insert into task_info (id, service_line_name, service_name, 
+      task_name, task_id, environment_type, 
+      case_numbers, interface_numbers, deleted, 
+      creator_name, create_time, updator_name, 
+      update_time, case_id_list)
+    values (#{id,jdbcType=BIGINT}, #{serviceLineName,jdbcType=VARCHAR}, #{serviceName,jdbcType=VARCHAR}, 
+      #{taskName,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{environmentType,jdbcType=TINYINT}, 
+      #{caseNumbers,jdbcType=VARCHAR}, #{interfaceNumbers,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER}, 
+      #{creatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updatorName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{caseIdList,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+    insert into task_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serviceLineName != null">
+        service_line_name,
+      </if>
+      <if test="serviceName != null">
+        service_name,
+      </if>
+      <if test="taskName != null">
+        task_name,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="environmentType != null">
+        environment_type,
+      </if>
+      <if test="caseNumbers != null">
+        case_numbers,
+      </if>
+      <if test="interfaceNumbers != null">
+        interface_numbers,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="creatorName != null">
+        creator_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updatorName != null">
+        updator_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="caseIdList != null">
+        case_id_list,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="serviceLineName != null">
+        #{serviceLineName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null">
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="caseNumbers != null">
+        #{caseNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceNumbers != null">
+        #{interfaceNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null">
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorName != null">
+        #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseIdList != null">
+        #{caseIdList,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+    update task_info
+    <set>
+      <if test="serviceLineName != null">
+        service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        service_name = #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null">
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        environment_type = #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="caseNumbers != null">
+        case_numbers = #{caseNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceNumbers != null">
+        interface_numbers = #{interfaceNumbers,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null">
+        creator_name = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorName != null">
+        updator_name = #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="caseIdList != null">
+        case_id_list = #{caseIdList,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+    update task_info
+    set service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      service_name = #{serviceName,jdbcType=VARCHAR},
+      task_name = #{taskName,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      environment_type = #{environmentType,jdbcType=TINYINT},
+      case_numbers = #{caseNumbers,jdbcType=VARCHAR},
+      interface_numbers = #{interfaceNumbers,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator_name = #{updatorName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      case_id_list = #{caseIdList,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+    update task_info
+    set service_line_name = #{serviceLineName,jdbcType=VARCHAR},
+      service_name = #{serviceName,jdbcType=VARCHAR},
+      task_name = #{taskName,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      environment_type = #{environmentType,jdbcType=TINYINT},
+      case_numbers = #{caseNumbers,jdbcType=VARCHAR},
+      interface_numbers = #{interfaceNumbers,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator_name = #{updatorName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,4 +1,4 @@
-package com.example.zxcpractice.commin.PO;
+package com.example.zxcpractice.common.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,13 +11,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("user")
-public class UserPO {
+@TableName("zzz_user")
+public class UserDAO {
     @TableId(value = "user_name",type = IdType.AUTO)
     private String userName;
     @TableField("sex")
     private String sex;
     @TableField("age")
     private int age;
+    @TableId("city")
+    private String city;
 }
 

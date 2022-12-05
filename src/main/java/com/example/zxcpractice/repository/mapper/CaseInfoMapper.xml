@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zxcpractice.repository.CaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.CaseInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="case_name" jdbcType="VARCHAR" property="caseName" />
+    <result column="api_id" jdbcType="VARCHAR" property="apiId" />
+    <result column="environment_id" jdbcType="TINYINT" property="environmentId" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="creator_name" jdbcType="VARCHAR" property="creatorName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updator_name" jdbcType="VARCHAR" property="updatorName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+    <result column="precondition" jdbcType="LONGVARCHAR" property="precondition" />
+    <result column="headers" jdbcType="LONGVARCHAR" property="headers" />
+    <result column="request_parameter" jdbcType="LONGVARCHAR" property="requestParameter" />
+    <result column="validation_rules" jdbcType="LONGVARCHAR" property="validationRules" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, case_name, api_id, environment_id, deleted, creator_name, create_time, updator_name, 
+    update_time
+  </sql>
+  <sql id="Blob_Column_List">
+    precondition, headers, request_parameter, validation_rules
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from case_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from case_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+    insert into case_info (id, case_name, api_id, 
+      environment_id, deleted, creator_name, 
+      create_time, updator_name, update_time, 
+      precondition, headers, request_parameter, 
+      validation_rules)
+    values (#{id,jdbcType=BIGINT}, #{caseName,jdbcType=VARCHAR}, #{apiId,jdbcType=VARCHAR}, 
+      #{environmentId,jdbcType=TINYINT}, #{deleted,jdbcType=INTEGER}, #{creatorName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updatorName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{precondition,jdbcType=LONGVARCHAR}, #{headers,jdbcType=LONGVARCHAR}, #{requestParameter,jdbcType=LONGVARCHAR}, 
+      #{validationRules,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+    insert into case_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="caseName != null">
+        case_name,
+      </if>
+      <if test="apiId != null">
+        api_id,
+      </if>
+      <if test="environmentId != null">
+        environment_id,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="creatorName != null">
+        creator_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updatorName != null">
+        updator_name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="precondition != null">
+        precondition,
+      </if>
+      <if test="headers != null">
+        headers,
+      </if>
+      <if test="requestParameter != null">
+        request_parameter,
+      </if>
+      <if test="validationRules != null">
+        validation_rules,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="caseName != null">
+        #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="apiId != null">
+        #{apiId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentId != null">
+        #{environmentId,jdbcType=TINYINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null">
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorName != null">
+        #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="precondition != null">
+        #{precondition,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="headers != null">
+        #{headers,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="requestParameter != null">
+        #{requestParameter,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validationRules != null">
+        #{validationRules,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+    update case_info
+    <set>
+      <if test="caseName != null">
+        case_name = #{caseName,jdbcType=VARCHAR},
+      </if>
+      <if test="apiId != null">
+        api_id = #{apiId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentId != null">
+        environment_id = #{environmentId,jdbcType=TINYINT},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null">
+        creator_name = #{creatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatorName != null">
+        updator_name = #{updatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="precondition != null">
+        precondition = #{precondition,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="headers != null">
+        headers = #{headers,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="requestParameter != null">
+        request_parameter = #{requestParameter,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="validationRules != null">
+        validation_rules = #{validationRules,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+    update case_info
+    set case_name = #{caseName,jdbcType=VARCHAR},
+      api_id = #{apiId,jdbcType=VARCHAR},
+      environment_id = #{environmentId,jdbcType=TINYINT},
+      deleted = #{deleted,jdbcType=INTEGER},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator_name = #{updatorName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      precondition = #{precondition,jdbcType=LONGVARCHAR},
+      headers = #{headers,jdbcType=LONGVARCHAR},
+      request_parameter = #{requestParameter,jdbcType=LONGVARCHAR},
+      validation_rules = #{validationRules,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.CaseInfo">
+    update case_info
+    set case_name = #{caseName,jdbcType=VARCHAR},
+      api_id = #{apiId,jdbcType=VARCHAR},
+      environment_id = #{environmentId,jdbcType=TINYINT},
+      deleted = #{deleted,jdbcType=INTEGER},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updator_name = #{updatorName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

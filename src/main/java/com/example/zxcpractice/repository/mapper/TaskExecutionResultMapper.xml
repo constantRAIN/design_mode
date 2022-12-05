@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zxcpractice.repository.TaskExecutionResultMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.TaskExecutionResult">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="task_name" jdbcType="VARCHAR" property="taskName" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="execution_id" jdbcType="VARCHAR" property="executionId" />
+    <result column="environment_type" jdbcType="TINYINT" property="environmentType" />
+    <result column="execution_status" jdbcType="INTEGER" property="executionStatus" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="execution_duration" jdbcType="TIME" property="executionDuration" />
+    <result column="cases_passCount" jdbcType="INTEGER" property="casesPasscount" />
+    <result column="cases_failCount" jdbcType="INTEGER" property="casesFailcount" />
+    <result column="cases_skippedCount" jdbcType="INTEGER" property="casesSkippedcount" />
+    <result column="cases_sumCount" jdbcType="INTEGER" property="casesSumcount" />
+    <result column="report_url" jdbcType="VARCHAR" property="reportUrl" />
+    <result column="build_user" jdbcType="VARCHAR" property="buildUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, task_name, task_id, execution_id, environment_type, execution_status, start_time, 
+    finish_time, execution_duration, cases_passCount, cases_failCount, cases_skippedCount, 
+    cases_sumCount, report_url, build_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_execution_result
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task_execution_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.TaskExecutionResult">
+    insert into task_execution_result (id, task_name, task_id, 
+      execution_id, environment_type, execution_status, 
+      start_time, finish_time, execution_duration, 
+      cases_passCount, cases_failCount, cases_skippedCount, 
+      cases_sumCount, report_url, build_user
+      )
+    values (#{id,jdbcType=BIGINT}, #{taskName,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{executionId,jdbcType=VARCHAR}, #{environmentType,jdbcType=TINYINT}, #{executionStatus,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{finishTime,jdbcType=TIMESTAMP}, #{executionDuration,jdbcType=TIME}, 
+      #{casesPasscount,jdbcType=INTEGER}, #{casesFailcount,jdbcType=INTEGER}, #{casesSkippedcount,jdbcType=INTEGER}, 
+      #{casesSumcount,jdbcType=INTEGER}, #{reportUrl,jdbcType=VARCHAR}, #{buildUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.TaskExecutionResult">
+    insert into task_execution_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskName != null">
+        task_name,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="executionId != null">
+        execution_id,
+      </if>
+      <if test="environmentType != null">
+        environment_type,
+      </if>
+      <if test="executionStatus != null">
+        execution_status,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="finishTime != null">
+        finish_time,
+      </if>
+      <if test="executionDuration != null">
+        execution_duration,
+      </if>
+      <if test="casesPasscount != null">
+        cases_passCount,
+      </if>
+      <if test="casesFailcount != null">
+        cases_failCount,
+      </if>
+      <if test="casesSkippedcount != null">
+        cases_skippedCount,
+      </if>
+      <if test="casesSumcount != null">
+        cases_sumCount,
+      </if>
+      <if test="reportUrl != null">
+        report_url,
+      </if>
+      <if test="buildUser != null">
+        build_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="taskName != null">
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="executionStatus != null">
+        #{executionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="executionDuration != null">
+        #{executionDuration,jdbcType=TIME},
+      </if>
+      <if test="casesPasscount != null">
+        #{casesPasscount,jdbcType=INTEGER},
+      </if>
+      <if test="casesFailcount != null">
+        #{casesFailcount,jdbcType=INTEGER},
+      </if>
+      <if test="casesSkippedcount != null">
+        #{casesSkippedcount,jdbcType=INTEGER},
+      </if>
+      <if test="casesSumcount != null">
+        #{casesSumcount,jdbcType=INTEGER},
+      </if>
+      <if test="reportUrl != null">
+        #{reportUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUser != null">
+        #{buildUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.TaskExecutionResult">
+    update task_execution_result
+    <set>
+      <if test="taskName != null">
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        execution_id = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="environmentType != null">
+        environment_type = #{environmentType,jdbcType=TINYINT},
+      </if>
+      <if test="executionStatus != null">
+        execution_status = #{executionStatus,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="executionDuration != null">
+        execution_duration = #{executionDuration,jdbcType=TIME},
+      </if>
+      <if test="casesPasscount != null">
+        cases_passCount = #{casesPasscount,jdbcType=INTEGER},
+      </if>
+      <if test="casesFailcount != null">
+        cases_failCount = #{casesFailcount,jdbcType=INTEGER},
+      </if>
+      <if test="casesSkippedcount != null">
+        cases_skippedCount = #{casesSkippedcount,jdbcType=INTEGER},
+      </if>
+      <if test="casesSumcount != null">
+        cases_sumCount = #{casesSumcount,jdbcType=INTEGER},
+      </if>
+      <if test="reportUrl != null">
+        report_url = #{reportUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUser != null">
+        build_user = #{buildUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.TaskExecutionResult">
+    update task_execution_result
+    set task_name = #{taskName,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=VARCHAR},
+      execution_id = #{executionId,jdbcType=VARCHAR},
+      environment_type = #{environmentType,jdbcType=TINYINT},
+      execution_status = #{executionStatus,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      execution_duration = #{executionDuration,jdbcType=TIME},
+      cases_passCount = #{casesPasscount,jdbcType=INTEGER},
+      cases_failCount = #{casesFailcount,jdbcType=INTEGER},
+      cases_skippedCount = #{casesSkippedcount,jdbcType=INTEGER},
+      cases_sumCount = #{casesSumcount,jdbcType=INTEGER},
+      report_url = #{reportUrl,jdbcType=VARCHAR},
+      build_user = #{buildUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
