@@ -5,7 +5,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 public class CaseInfoWithBLOBs extends CaseInfo {
     private String precondition;

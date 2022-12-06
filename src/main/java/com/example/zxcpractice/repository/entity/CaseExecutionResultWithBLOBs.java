@@ -5,7 +5,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
 public class CaseExecutionResultWithBLOBs extends CaseExecutionResult {
     private String requestParameter;

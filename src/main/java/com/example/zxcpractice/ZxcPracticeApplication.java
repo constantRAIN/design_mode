@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.zxcpractice.mapper")
+@MapperScan("com.example.zxcpractice.repository.mapper")
 public class ZxcPracticeApplication {
 
     public static void main(String[] args) {
