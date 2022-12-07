@@ -1,4 +1,4 @@
-package com.example.zxcpractice.repository.entity;
+package com.example.zxcpractice.entity;
 
 import lombok.*;
 
@@ -8,16 +8,14 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @ToString
-public class EnvironmentInfo {
+public class CaseInfo {
     private Long id;
 
-    private String serviceLineName;
+    private String caseName;
 
-    private String serviceName;
+    private String apiId;
 
-    private Byte environmentType;
-
-    private String domainName;
+    private Byte environmentId;
 
     private Integer deleted;
 

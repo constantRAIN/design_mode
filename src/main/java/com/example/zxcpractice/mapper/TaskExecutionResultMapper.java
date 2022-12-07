@@ -1,9 +1,7 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.TaskExecutionResult;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.TaskExecutionResult;
 
-@Component
 public interface TaskExecutionResultMapper {
     int deleteByPrimaryKey(Long id);
 

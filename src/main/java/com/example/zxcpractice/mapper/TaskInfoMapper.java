@@ -1,9 +1,7 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.TaskInfo;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.TaskInfo;
 
-@Component
 public interface TaskInfoMapper {
     int deleteByPrimaryKey(Long id);
 

@@ -1,9 +1,7 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.EnvironmentInfo;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.EnvironmentInfo;
 
-@Component
 public interface EnvironmentInfoMapper {
     int deleteByPrimaryKey(Long id);
 

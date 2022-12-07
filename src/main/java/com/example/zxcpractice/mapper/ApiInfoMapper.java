@@ -1,11 +1,7 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.ApiInfo;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.ApiInfo;
 
-@Component
-@Mapper
 public interface ApiInfoMapper {
     int deleteByPrimaryKey(Long id);
 

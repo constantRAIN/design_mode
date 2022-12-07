@@ -1,4 +1,4 @@
-package com.example.zxcpractice.repository.entity;
+package com.example.zxcpractice.entity;
 
 import lombok.*;
 

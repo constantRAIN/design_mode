@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.zxcpractice.repository.CaseInfoMapper">
-  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.CaseInfo">
+<mapper namespace="com.example.zxcpractice.mapper.CaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.entity.CaseInfo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="case_name" jdbcType="VARCHAR" property="caseName" />
     <result column="api_id" jdbcType="VARCHAR" property="apiId" />
@@ -12,7 +12,7 @@
     <result column="updator_name" jdbcType="VARCHAR" property="updatorName" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.entity.CaseInfoWithBLOBs">
     <result column="precondition" jdbcType="LONGVARCHAR" property="precondition" />
     <result column="headers" jdbcType="LONGVARCHAR" property="headers" />
     <result column="request_parameter" jdbcType="LONGVARCHAR" property="requestParameter" />
@@ -37,7 +37,7 @@
     delete from case_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+  <insert id="insert" parameterType="com.example.zxcpractice.entity.CaseInfoWithBLOBs">
     insert into case_info (id, case_name, api_id, 
       environment_id, deleted, creator_name, 
       create_time, updator_name, update_time, 
@@ -49,7 +49,7 @@
       #{precondition,jdbcType=LONGVARCHAR}, #{headers,jdbcType=LONGVARCHAR}, #{requestParameter,jdbcType=LONGVARCHAR}, 
       #{validationRules,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.entity.CaseInfoWithBLOBs">
     insert into case_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -134,7 +134,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.entity.CaseInfoWithBLOBs">
     update case_info
     <set>
       <if test="caseName != null">
@@ -176,7 +176,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.entity.CaseInfoWithBLOBs">
     update case_info
     set case_name = #{caseName,jdbcType=VARCHAR},
       api_id = #{apiId,jdbcType=VARCHAR},
@@ -192,7 +192,7 @@
       validation_rules = #{validationRules,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.CaseInfo">
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.entity.CaseInfo">
     update case_info
     set case_name = #{caseName,jdbcType=VARCHAR},
       api_id = #{apiId,jdbcType=VARCHAR},

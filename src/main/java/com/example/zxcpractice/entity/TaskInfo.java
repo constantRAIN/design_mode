@@ -1,4 +1,4 @@
-package com.example.zxcpractice.repository.entity;
+package com.example.zxcpractice.entity;
 
 import lombok.*;
 
@@ -8,24 +8,22 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @ToString
-public class ApiInfo {
+public class TaskInfo {
     private Long id;
 
     private String serviceLineName;
 
     private String serviceName;
 
-    private String apiName;
+    private String taskName;
 
-    private String requestMethod;
+    private String taskId;
 
-    private String requestPath;
+    private Byte environmentType;
 
-    private String apiPriority;
+    private String caseNumbers;
 
-    private String apiManager;
-
-    private String yapiUrl;
+    private String interfaceNumbers;
 
     private Integer deleted;
 
@@ -36,4 +34,6 @@ public class ApiInfo {
     private String updatorName;
 
     private Date updateTime;
+
+    private String caseIdList;
 }

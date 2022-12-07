@@ -19,7 +19,7 @@ public class UserDAO {
     private String sex;
     @TableField("age")
     private int age;
-    @TableId("city")
+    @TableField("city")
     private String city;
 }
 

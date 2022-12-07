@@ -1,10 +1,8 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.CaseInfo;
-import com.example.zxcpractice.repository.entity.CaseInfoWithBLOBs;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.CaseInfo;
+import com.example.zxcpractice.entity.CaseInfoWithBLOBs;
 
-@Component
 public interface CaseInfoMapper {
     int deleteByPrimaryKey(Long id);
 

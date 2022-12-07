@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.zxcpractice.repository.TaskInfoMapper">
-  <resultMap id="BaseResultMap" type="com.example.zxcpractice.repository.entity.TaskInfo">
+<mapper namespace="com.example.zxcpractice.mapper.TaskInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.zxcpractice.entity.TaskInfo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="service_line_name" jdbcType="VARCHAR" property="serviceLineName" />
     <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
@@ -16,7 +16,7 @@
     <result column="updator_name" jdbcType="VARCHAR" property="updatorName" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.repository.entity.TaskInfo">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.zxcpractice.entity.TaskInfo">
     <result column="case_id_list" jdbcType="LONGVARCHAR" property="caseIdList" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -38,7 +38,7 @@
     delete from task_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+  <insert id="insert" parameterType="com.example.zxcpractice.entity.TaskInfo">
     insert into task_info (id, service_line_name, service_name, 
       task_name, task_id, environment_type, 
       case_numbers, interface_numbers, deleted, 
@@ -50,7 +50,7 @@
       #{creatorName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updatorName,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{caseIdList,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+  <insert id="insertSelective" parameterType="com.example.zxcpractice.entity.TaskInfo">
     insert into task_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -141,7 +141,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.zxcpractice.entity.TaskInfo">
     update task_info
     <set>
       <if test="serviceLineName != null">
@@ -186,7 +186,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.zxcpractice.entity.TaskInfo">
     update task_info
     set service_line_name = #{serviceLineName,jdbcType=VARCHAR},
       service_name = #{serviceName,jdbcType=VARCHAR},
@@ -203,7 +203,7 @@
       case_id_list = #{caseIdList,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.repository.entity.TaskInfo">
+  <update id="updateByPrimaryKey" parameterType="com.example.zxcpractice.entity.TaskInfo">
     update task_info
     set service_line_name = #{serviceLineName,jdbcType=VARCHAR},
       service_name = #{serviceName,jdbcType=VARCHAR},

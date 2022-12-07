@@ -1,12 +1,9 @@
-package com.example.zxcpractice.repository;
+package com.example.zxcpractice.mapper;
 
-import com.example.zxcpractice.repository.entity.CaseExecutionResult;
-import com.example.zxcpractice.repository.entity.CaseExecutionResultWithBLOBs;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
+import com.example.zxcpractice.entity.CaseExecutionResult;
+import com.example.zxcpractice.entity.CaseExecutionResultWithBLOBs;
 
-@Component
-@Mapper
+
 public interface CaseExecutionResultMapper {
     int deleteByPrimaryKey(Long id);
 
