@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+    <test name="ApplicationTest">
+        <classes>
+            <class name="com.example.zxcpractice.sql.TestNGTask1"></class>
+            <class name="com.example.zxcpractice.sql.TestNGTask2"></class>
+        </classes>
+    </test>
+</suite>

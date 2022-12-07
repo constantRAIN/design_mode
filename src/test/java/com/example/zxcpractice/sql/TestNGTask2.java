@@ -3,7 +3,7 @@ package com.example.zxcpractice.sql;
 import org.testng.Assert;
 import org.testng.annotations.Test;
  
-public class InterTest {
+public class TestNGTask2 {
     @Test
     public void Test1() {
         System.out.println("Test1");
