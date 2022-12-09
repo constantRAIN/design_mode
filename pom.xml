@@ -37,6 +37,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
+<!--            非test任务也应该可以使用吧-->
             <scope>test</scope>
         </dependency>
         <!--allure报表依赖-->
@@ -81,7 +82,6 @@
             <version>3.4.1</version>
         </dependency>
         <!-- mybatis end -->
-
     </dependencies>
 
 
