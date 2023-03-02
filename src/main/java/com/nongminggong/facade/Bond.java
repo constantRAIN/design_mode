@@ -11,6 +11,6 @@ public class Bond {
 	}
 
 	public void sell(){
-		System.out.println("买债券");
+		System.out.println("卖债券");
 	}
 }

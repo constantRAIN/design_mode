@@ -11,6 +11,6 @@ public class NationalDebt {
 	}
 
 	public void sell(){
-		System.out.println("买国债");
+		System.out.println("卖国债");
 	}
 }

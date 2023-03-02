@@ -11,6 +11,6 @@ public class Stock {
 	}
 
 	public void sell(){
-		System.out.println("买股票");
+		System.out.println("卖股票");
 	}
 }
